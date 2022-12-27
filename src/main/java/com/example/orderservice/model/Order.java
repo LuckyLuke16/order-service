@@ -17,4 +17,9 @@ public class Order {
     private long paymentId;
 
     private String userId;
+
+    public Order(long paymentId, String userId) {
+        this.paymentId = paymentId;
+        this.userId = userId;
+    }
 }
