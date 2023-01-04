@@ -2,7 +2,7 @@ package com.example.orderservice.service;
 
 import com.example.orderservice.exception.OrderPersistenceException;
 import com.example.orderservice.exception.PaymentNotUniqueException;
-import com.example.orderservice.model.Order;
+import com.example.orderservice.model.entity.Order;
 import com.example.orderservice.repository.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

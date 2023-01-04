@@ -1,7 +1,10 @@
 package com.example.orderservice.controller;
 
 
+import com.example.orderservice.model.Address;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -9,5 +12,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface OrderOperations {
 
     @PostMapping
-    Long persistOrder(@RequestParam long paymentId, @RequestParam String userId);
+    ResponseEntity<Long> persistOrder(@RequestParam long paymentId, @RequestParam String userId, @RequestBody Address address);
 }

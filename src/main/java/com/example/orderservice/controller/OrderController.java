@@ -1,8 +1,10 @@
 package com.example.orderservice.controller;
 
+import com.example.orderservice.model.Address;
 import com.example.orderservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -16,12 +18,14 @@ public class OrderController implements OrderOperations{
         this.orderService = orderService;
     }
 
-    public Long persistOrder(long paymentId, String userId) {
+    public ResponseEntity<Long> persistOrder(long paymentId, String userId, Address address) {
         if(userId.trim().isEmpty())
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 
         try {
-            return this.orderService.saveOrder(userId, paymentId);
+            Long orderId = this.orderService.saveOrder(userId, paymentId);
+            return new ResponseEntity<>(orderId, HttpStatus.OK);
+
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
