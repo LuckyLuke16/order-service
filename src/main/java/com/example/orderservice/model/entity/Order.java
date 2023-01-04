@@ -1,4 +1,4 @@
-package com.example.orderservice.model;
+package com.example.orderservice.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -17,4 +17,9 @@ public class Order {
     private long paymentId;
 
     private String userId;
+
+    public Order(long paymentId, String userId) {
+        this.paymentId = paymentId;
+        this.userId = userId;
+    }
 }
